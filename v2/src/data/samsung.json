@@ -1,5 +1,5 @@
 {
-  "company": { "name": "삼성전자", "ticker": "005930", "market": "코스피", "basis": "2025 사업보고서(제57기, 2026-03-10 제출)" },
+  "company": { "name": "삼성전자", "ticker": "005930", "market": "코스피", "industry": "반도체", "basis": "2025 사업보고서(제57기, 2026-03-10 제출)" },
   "verdict": {
     "question": "이 회사는 무엇을 하는 곳인가?",
     "answer": "메모리 반도체와 스마트폰을 만들어 파는 회사",
@@ -24,7 +24,7 @@
     "F1": { "type": "figure", "doc": "삼성전자 지속가능경영 데이터 · 2025 4Q 경영설명회(연결, FY2025)", "section": "사업부문별 매출(순매출액 기준 비율) · 사업부문별 매출 및 영업이익",
       "text": "DX 52%(188.0조) · DS 36%(130.1조, 메모리 104.1조) · SDC 8%(29.8조) · Harman 4%(15.8조)", "url": "https://www.samsung.com/sec/sustainability/digital-library/facts-figures/" }
   },
-  "images": { "m1": "images/m1-products.png", "diorama": "images/diorama.png" },
+  "images": { "m1": "images/m1-products.png", "diorama": "images/diorama.jpg" },
   "disclaimer": "정보 탐색 도구입니다. 매수·매도 권유가 아닙니다.",
   "forbiddenWords": ["매수", "매도", "추천", "목표가", "전망", "사라", "팔아라", "유망", "저평가", "고평가"]
 }

@@ -8,12 +8,12 @@ import ImageSlot from '../components/ImageSlot'
 import Button from '../components/Button'
 import Disclaimer from '../components/Disclaimer'
 
-export default function M1({ onNext, onSource }: { onNext: () => void; onSource: () => void }) {
+export default function M1({ onBack, onNext, onSource }: { onBack: () => void; onNext: () => void; onSource: () => void }) {
   return (
     <Shell
       top={
         <>
-          <Header title={data.company.name} />
+          <Header title={data.company.name} onBack={onBack} />
           <Progress step={1} />
           <DarkCard label={data.verdict.question} value={data.verdict.answer} />
         </>

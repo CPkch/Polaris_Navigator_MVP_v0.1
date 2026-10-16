@@ -10,8 +10,22 @@ export type IconName =
   | 'screen'
   | 'car'
   | 'image'
+  | 'camera'
+  | 'upload'
 
 const paths: Record<IconName, ReactElement> = {
+  camera: (
+    <>
+      <path d="M4 8h3l2-3h6l2 3h3v11H4z" />
+      <circle cx="12" cy="13" r="3" />
+    </>
+  ),
+  upload: (
+    <>
+      <path d="M12 16V4M6 10l6-6 6 6" />
+      <path d="M4 20h16" />
+    </>
+  ),
   'chevron-left': <path d="M15 18l-6-6 6-6" />,
   'chevron-right': <path d="M9 18l6-6-6-6" />,
   'arrow-right': (

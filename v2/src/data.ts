@@ -23,7 +23,7 @@ export interface Source {
 }
 
 export interface Data {
-  company: { name: string; ticker: string; market: string; basis: string }
+  company: { name: string; ticker: string; market: string; industry: string; basis: string }
   verdict: { question: string; answer: string; sourceId: string }
   segments: Segment[]
   segmentsCaption: string
