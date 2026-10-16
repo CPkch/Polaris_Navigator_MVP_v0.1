@@ -1,0 +1,73 @@
+# main에 푸시하면 v1·v2를 빌드해 GitHub Pages에 올린다.
+# 주소: <pages>/v1/, <pages>/v2/ — 루트는 v2로 보낸다.
+# 저장소 Settings → Pages → Source가 "GitHub Actions"여야 한다.
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: |
+            v1/package-lock.json
+            v2/package-lock.json
+
+      - name: Build v1
+        working-directory: v1
+        run: npm ci && npm run build
+
+      - name: Build v2
+        working-directory: v2
+        run: npm ci && npm run build
+
+      - name: Assemble site
+        run: |
+          mkdir site
+          cp -r v1/dist site/v1
+          cp -r v2/dist site/v2
+          cat > site/index.html <<'EOF'
+          <!doctype html>
+          <html lang="ko">
+            <head>
+              <meta charset="UTF-8" />
+              <meta http-equiv="refresh" content="0; url=./v2/" />
+              <title>Polaris Navigator</title>
+            </head>
+            <body>
+              <a href="./v2/">Polaris Navigator v2</a> · <a href="./v1/">v1</a>
+            </body>
+          </html>
+          EOF
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: site
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

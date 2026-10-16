@@ -19,3 +19,10 @@ npm run dev
 ```
 
 `v1` 자리에 `v2`를 넣으면 v2가 뜬다.
+
+## 배포
+
+`main`에 푸시하면 GitHub Actions(`.github/workflows/deploy.yml`)가 v1·v2를 빌드해 GitHub Pages에 올린다.
+
+- v2: https://cpkch.github.io/Polaris_Navigator_MVP_v0.1/v2/ (루트 주소도 여기로 이동)
+- v1: https://cpkch.github.io/Polaris_Navigator_MVP_v0.1/v1/
